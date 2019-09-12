@@ -1,0 +1,63 @@
+<div class="res-detail-main">
+    <div
+        [class.no-service]="currentRestaurant.R.has_menu_status.delivery !== 1"
+        class="header"
+        [ngStyle]="{
+            'background-image': 'url('+currentRestaurant.featured_image+')'
+        }"
+    >
+        <div class="overlay"></div>
+        <div *ngIf="currentRestaurant.R.has_menu_status.delivery !== 1" class="closed">Not accepting orders currently</div>
+        <div (click)="goBack()" class="back-arrow">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="info">
+            <div class="name">
+                {{currentRestaurant.name}}
+            </div>
+            <div class="address">
+                {{currentRestaurant.location.address}}
+            </div>
+            <div class="ratings">
+                <div class="avg-rating"
+                    [ngStyle]="{'background': '#'+currentRestaurant.user_rating.rating_color}"
+                >{{currentRestaurant.user_rating.aggregate_rating}}</div>
+                <div class="stars">
+                    <bar-rating [readOnly]="true" [(rate)]="currentRestaurant.user_rating.aggregate_rating" [max]="5"></bar-rating>
+                </div>
+                <div class="votes">
+                    {{currentRestaurant.user_rating.votes > 0 ? currentRestaurant.user_rating.votes+' votes' : '0 votes'}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="isLoadingMenu">
+        <app-res-card-shimmer></app-res-card-shimmer>
+        <app-res-card-shimmer></app-res-card-shimmer>
+        <app-res-card-shimmer></app-res-card-shimmer>
+        <app-res-card-shimmer></app-res-card-shimmer>
+    </ng-container>
+    <ng-container *ngIf="!isLoadingMenu">
+        <div *ngIf="menuError || dailyMenus?.length < 1" class="error">No daily menu available</div>
+        <div *ngIf="dailyMenus?.length > 0" class="title">Daily Menu</div>
+        <div *ngFor="let dailyMenu of dailyMenus" class="menu-container">
+            <app-dish-card
+                *ngFor="let dish of dailyMenu.daily_menu.dishes"
+                [dish]="dish.dish"
+            ></app-dish-card>
+        </div>
+    </ng-container>
+    <agm-map *ngIf="currentRestaurant" [latitude]="parseInt(currentRestaurant.location.latitude)" [longitude]="parseInt(currentRestaurant.location.longitude)">
+        <agm-marker [latitude]="parseInt(currentRestaurant.location.latitude)" [longitude]="parseInt(currentRestaurant.location.longitude)"></agm-marker>
+    </agm-map>
+    <div class="reviews-container">
+        <div *ngIf="currentRestaurant.all_reviews.reviews?.length < 1" class="error">No reviews yet</div>
+        <ng-container *ngIf="currentRestaurant.all_reviews.reviews?.length > 0">
+            <div class="title">Reviews</div>
+            <app-review-card
+                *ngFor="let review of currentRestaurant.all_reviews.reviews"
+                [review]="review.review"
+            ></app-review-card>
+        </ng-container>
+    </div>
+</div>

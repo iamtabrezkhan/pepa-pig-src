@@ -1,1 +1,174 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~ngx-bar-rating/themes/br-default-theme';
+
+$color-blue: #30BCC9;
+$color-yellow: #ffecb6;
+
+:root {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: rgb(250, 250, 250);
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.navbar {
+    width: calc(100% - 30px);
+    height: 50px;
+    padding: 0 15px;
+    background: $color-yellow;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: $color-blue;
+}
+
+.navbar .search-box {
+    position: relative;
+    width: 30%;
+    background: white;
+    // border: 1px solid $color-blue;
+    color: $color-blue;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    // overflow: hidden;
+}
+
+.navbar .search-box .icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .search-box .detect-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.navbar .search-box .detect-icon:hover {
+    background: #eee;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.navbar .search-box .detect-icon img {
+    width: 60%;
+    display: block;
+}
+
+.navbar .search-box input {
+    width: calc(100% - 80px);
+    border: none;
+    height: 100%;
+    outline: none;
+    font-family: 'Quicksand', sans-serif;
+    background: transparent;
+    padding-right: 10px;
+}
+
+.navbar .search-box .locations-container {
+    position: absolute;
+    width: calc(100% - 30px);
+    background: white;
+    top: 100%;
+    left: 0;
+    box-shadow: 0px 10px 20px -8px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid #ddd;
+    padding: 10px 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow-y: auto;
+}
+.navbar .search-box .locations-container::-webkit-scrollbar {
+    display: none;
+}
+
+.is-searching {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.content {
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    padding: 25px 50px;
+    max-width: 1224px;
+    margin: 0 auto;
+}
+
+.notification {
+    min-width: 100px;
+    max-width: 30%;
+    padding: 10px 12px;
+    background: #3a3a3a;
+    color: white;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 99;
+    border-radius: 10px;
+    bottom: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .navbar .search-box {
+        width: 50%;
+    }
+
+    .content {
+        width: calc(100% - 50px);
+        padding: 25px 25px;
+    }
+
+    .notification {
+        max-width: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    .navbar .search-box {
+        width: 70%;
+    }
+
+    .content {
+        width: calc(100% - 10px);
+        padding: 25px 5px;
+    }
+
+    :root {
+        font-size: 14px;
+    }
+
+    .notification {
+        max-width: 70%;
+    }
+
+}

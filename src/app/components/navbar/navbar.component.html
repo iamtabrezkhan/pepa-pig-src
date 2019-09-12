@@ -1,0 +1,35 @@
+<nav class="navbar">
+    <div class="wrapper">
+        <div class="logo">Pepa Pig</div>
+        <div class="search-box" [class.is-searching]="isResultContainerOpen">
+            <div class="icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <input type="text" (keyup)="onKeyUp($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" placeholder="Location..." [(ngModel)]="location.title">
+            <div (click)="detectLocation()" class="detect-icon">
+                <img src="./assets/images/detect.svg" alt="">
+            </div>
+            <div @unfoldDown *ngIf="isResultContainerOpen" class="locations-container">
+                <ng-container
+                    *ngIf="!isSearching"
+                >
+                    <div *ngIf="locationsObj?.location_suggestions?.length === 0" class="no-results">No results found</div>
+                </ng-container>
+                <ng-container *ngIf="isSearching">
+                    <app-search-location-shimmer></app-search-location-shimmer>
+                    <app-search-location-shimmer></app-search-location-shimmer>
+                    <app-search-location-shimmer></app-search-location-shimmer>
+                    <app-search-location-shimmer></app-search-location-shimmer>
+                    <app-search-location-shimmer></app-search-location-shimmer>
+                </ng-container>
+                <ng-container *ngIf="!isSearching">
+                    <ng-container *ngIf="locationsObj">
+                            <div @slide *ngFor="let loc of locationsObj.location_suggestions" (click)="onLocationSelect(loc)" class="result">
+                                {{loc.title}}
+                            </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</nav>

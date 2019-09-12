@@ -1,0 +1,155 @@
+$color-blue: #30BCC9;
+$color-yellow: #ffecb6;
+
+.res-detail-main {
+    width: 100%;
+    height: 100%;
+}
+
+.res-detail-main .header {
+    position: relative;
+    width: calc(100% - 40px);
+    min-height: 400px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 5px 20px -1px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.res-detail-main .header .overlay {
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    z-index: 1;
+}
+
+.res-detail-main .header .info {
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+.res-detail-main .header .info .name {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.res-detail-main .header .info .address {
+    padding-top: 5px;
+}
+
+.res-detail-main .header .back-arrow {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    height: 40px;
+    width: 3rem;
+    border-radius: 10px;
+    background: white;
+    color: darkgray;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 4;
+    cursor: pointer;
+}
+
+.res-detail-main .header .ratings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.res-detail-main .header .ratings .avg-rating {
+    padding: 5px;
+    border-radius: 3px;
+    min-width: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7px;
+}
+
+.res-detail-main .header .ratings .stars {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.res-detail-main .header .ratings .votes {
+    margin-left: 7px;
+}
+
+bar-rating {
+    padding-bottom: 10px;
+}
+
+.menu-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+.title,
+.error {
+    width: calc(100% - 10px);
+    padding: 20px 5px;
+    font-weight: bold;
+    color: red;
+    font-size: 1.2rem;
+}
+
+.title {
+    color: $color-blue;
+    padding-bottom: 10px;
+}
+
+agm-map {
+    height: 300px;
+    padding-bottom: 20px;
+}
+
+.reviews-container {
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.closed {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 1.2rem;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.no-service {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+@media only screen and (max-width: 768px) {
+
+    .res-detail-main .header {
+        min-height: 250px;
+    }
+
+}

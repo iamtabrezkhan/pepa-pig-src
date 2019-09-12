@@ -1,0 +1,46 @@
+$color-blue: #30BCC9;
+$color-yellow: #ffecb6;
+
+:host {
+    width: calc(50% - 10px);
+    margin: 0 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dish-card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.dish-card-container .img {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+
+.dish-card-container .name-price {
+    width: calc(100% - 130px);
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.dish-card-container .name-price .name {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #474747;
+}
+.dish-card-container .name-price .price {
+    color: $color-blue;
+}
+
+.shimmer-container {
+    width: calc(50% - 10px)
+}

@@ -1,0 +1,51 @@
+<div class="home-main">
+    <div *ngIf="!currentLocation" class="overlay">
+        {{overlayMessage}}
+    </div>
+    <div class="search-res-container" [class.search-box-active]="isSearchOpen">
+        <div class="icon">
+            <i @rotateRightFade *ngIf="!isSearchOpen" class="fas fa-search"></i>
+            <i (click)="closeSearch()" @rotateRightFade *ngIf="isSearchOpen" class="fas fa-arrow-left"></i>
+        </div>
+        <input (keyup)="onKeyUp($event)" (blur)="onBlur($event)" (focus)="onFocus($event)" type="text" placeholder="Search for restaurants..." [(ngModel)]="resString">
+    </div>
+    <div
+        class="restaurants"
+    >
+        <div class="wrapper">
+            <ng-container *ngIf="isLoading" >
+                <app-res-card-shimmer></app-res-card-shimmer>
+                <app-res-card-shimmer></app-res-card-shimmer>
+                <app-res-card-shimmer></app-res-card-shimmer>
+                <app-res-card-shimmer></app-res-card-shimmer>
+                <app-res-card-shimmer></app-res-card-shimmer>
+                <app-res-card-shimmer></app-res-card-shimmer>
+            </ng-container>
+            <ng-container *ngIf="!isLoading">
+                <ng-container *ngIf="!isSearchOpen">
+                    <div *ngIf="restaurants?.results_found === 0" class="no-results">
+                        No results found
+                    </div>
+                    <app-res-card
+                        @slide
+                        *ngFor="let res of restaurants?.restaurants"
+                        [restaurant]="res.restaurant"
+                        (click)="selectRestaurant(res.restaurant)"
+                    ></app-res-card>
+                    <div (click)="onLoadMore()" *ngIf="restaurants?.restaurants?.length < restaurants?.results_found" class="load-more">{{isLoadingMore ? 'Loading...' : 'Load More'}}</div>
+                </ng-container>
+                <ng-container *ngIf="isSearchOpen">
+                    <div *ngIf="searchResults?.results_found === 0" class="no-results">
+                        No results found
+                    </div>
+                    <app-res-card
+                        @slide
+                        *ngFor="let res of searchResults?.restaurants"
+                        [restaurant]="res.restaurant"
+                        (click)="selectRestaurant(res.restaurant)"
+                    ></app-res-card>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</div>

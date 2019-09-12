@@ -1,0 +1,142 @@
+:host {
+    width: calc(33.33% - 10px);
+    margin: 0 5px;
+    margin-bottom: 20px;
+}
+
+.shimmer-container {
+    height: 100px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 1000px 104px;
+    overflow: hidden;
+}
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.mask {
+    position: absolute;
+    background: white;
+}
+
+.border-top {
+    width: 100%;
+    height: 10px;
+    top: 0;
+    left: 0;
+}
+
+.border-bottom {
+    width: 100%;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+}
+
+.border-left {
+    width: 10px;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.border-right {
+    width: 10px;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+}
+
+.img-left {
+    width: 20px;
+    height: 100%;
+    bottom: 0;
+    left: 20%;
+}
+
+.title-bottom {
+    width: calc(80% - 20px);
+    height: 10px;
+    right: 0;
+    top: 30px;
+}
+
+.title-right {
+    width: 40px;
+    height: 100%;
+    top: 0;
+    right: 20%;
+}
+
+.sub-title-bottom {
+    width: calc(80% - 20px);
+    height: 10px;
+    top: 50px;
+    right: 0;
+}
+
+.sub-title-right {
+    width: calc(20% + 40px);
+    height: 20px;
+    top: 40px;
+    right: 0;
+}
+
+.sub-title-bottom-2 {
+    width: calc(80% - 20px);
+    height: 10px;
+    top: 70px;
+    right: 0;
+}
+
+.sub-title-right-2 {
+    width: calc(20% + 80px);
+    height: 20px;
+    top: 60px;
+    right: 0;
+}
+
+.sub-title-right-3 {
+    width: calc(20% + 20px);
+    height: 20px;
+    top: 80px;
+    right: 20%;
+}
+
+.last-right-mid {
+    width: 20px;
+    height: 30px;
+    right: calc(10% - 5px);
+    bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+
+    :host {
+        width: calc(50% - 10px);
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    :host {
+        width: calc(100% - 10px);
+    }
+
+}

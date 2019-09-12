@@ -1,0 +1,7 @@
+<div class="review-card">
+    <div class="name">{{review.user.name}}</div>
+    <div class="rating">
+        <bar-rating [readOnly]="true" [(rate)]="review.rating" [max]="5"></bar-rating>
+    </div>
+    <div class="review-text">{{review.review_text}}</div>
+</div>
